@@ -22,8 +22,7 @@
 				<!-- Header -->
 					<header id="header" class="alt">
 						<h1><a href="index.html">Home</a></h1>
-						<h1><a href="procedure.html">Procedure</a></h1>
-						<h1><a href="stats.html">Stats</a></h1>
+						<h1><a href="results.html">Results</a></h1>
 						<h1><a href="thanks.html">Thanks</a></h1>
 						<nav>
 							<a href="#menu">Menu</a>
@@ -36,8 +35,7 @@
 							<h2>Menu</h2>
 							<ul class="links">
 								<li><a href="index.html">Home</a></li>
-								<li><a href="procedure.html">Procedure</a></li>
-								<li><a href="stats.html">Stats</a></li>
+								<li><a href="results.html">Results</a></li>
 								<li><a href="thanks.html">Thanks</a></li>
 							</ul>
 							<a href="#" class="close">Close</a>
@@ -48,8 +46,7 @@
 					<section id="banner">
 						<div class="inner">
 							<div class="logo"><span class="icon fa-diamond"></span></div>
-							<h2>Amazon Product Reviews</h2>
-							<p>A data analysis project by Paul Conrady and Daniel Franklin</a></p>
+							<h2>How did it go?</h2>
 						</div>
 					</section>
 
@@ -59,11 +56,15 @@
 						<!-- One -->
 							<section id="one" class="wrapper spotlight style1">
 								<div class="inner">
-									<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+									<a href="#" class="image"><img src="images/yuge.jpg" alt="" /></a>
 									<div class="content">
-										<h2 class="major">What's the system?</h2>
+										<h2 class="major">The Data</h2>
 										<p>
-										The system we’re going to examine is the Amazon review system. A large part of shopping on Amazon is that users can see reviews left by others on their products, including star-based ratings (1-5) and detailed explanations of their opinions. This helps users determine, from a large amount of data yielded by other customers who have already purchased a product, whether or not it’s worth ordering. This feature also allows users to view various metadata, the most impactful of which being the “Users also bought” feature, which shows products that users bought with the product in question.
+										The data proved too large and unwieldy for any computer we could find to handle. The convenient parsing of R dataframes we all so enjoy, we quickly learned, is
+										due to their sizable memory overhead. The smallest cross-item-type dataset yielded a dataframe that exceeded our 16gb RAM limitation. Because of this, we couldn't operate on the 100-million-odd reviews we had hoped to.
+										Our group lacked access to a computer with the sufficient RAM to handle any but the smallest datasets. Fortunately, this still left millions and millions
+										of reviews for us to parse; given time constraints (parsing is extremely slow) we were able to process 12,985,172 reviews. By any metric,
+										this is still a significant number.
 										</p>
 										
 									</div>
@@ -73,10 +74,17 @@
 					<!-- Two -->
 							<section id="two" class="wrapper alt spotlight style2">
 								<div class="inner">
-									<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
+									<a href="#" class="image"><img src="images/json.jpg" alt="" /></a>
 									<div class="content">
-										<h2 class="major">What does the data look like?</h2>
-										<p>The data we’ll be using was compiled by two sources- Jure Leskovec at Stanford University, and Julian Mcauley of UCSD. Between the two datasets, roughly 170 million reviews are covered, ranging from June 1995 to July 2014. The two datasets are available in full plaintext, as well as organized by product type (books, automotive, etc.) It is not clear as to whether the ~35 million reviews from Leskovec and the ~140 million reviews from Mcauley have overlaps, so it may be necessary to include checks for duplicate data. Each datum contains sufficient attributes to draw meaningful conclusions- relevant fields include product and user IDs, review text, numerical rating, and helpfulness of the review (as rated by other users). Leskovac’s database includes metadata for 9.4 million products including price, brand, also-viewed items, also-bought items, product url, and items bought together with the product in question. The amount and richness of data supplied indicates that our problem won’t be in finding meaningful information to draw conclusions from, but in finding efficient ways to sift through gigabytes of plaintext to find meaningful data.</p>
+										<h2 class="major">Issues</h2>
+										<p>
+										The data presented to us was in a modified JSON- raw data from Amazon's API isn't in a standard format. It needed to be parsed into JSON in Python first,
+										then we were able to convert from there into R dataframes with pre-existing R applications. We ran into a major issue, though, because apparently some reviews made it
+										into the JSON data with internal quotes in the review text, and failed to be escape-charactered out. This led to totally unreadable files, and as far as we were able
+										to determine, it's not an issue that we possessed the resources to overcome. The only other issue our group encountered was timing- with full courseloads and limited
+										computer resources, our group wasn't able to devote the days at a time it took to parse through all of the data piecemeal. This severely limited the scope of conclusions we were
+										able to draw from the data.
+										</p>
 									</div>
 								</div>
 							</section>
@@ -86,8 +94,15 @@
 								<div class="inner">
 									<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
 									<div class="content">
-										<h2 class="major">What questions will we ask?</h2>
-										<p>There are innumerable conclusions that can be drawn by interpreting Amazon product data. At this time, we’re hoping to analyze mostly relationships between products, as well as the customers who review them. Namely: Do reviewers who review more often (Say, more than 50 reviews) generally tend to be more representative of the average review? Do initial reviews always indicate the trend a product’s reviews will follow? How interlinked are different departments in the “Users also bought” and “Users also reviewed” categories? Are ratings for a product more likely to be given a “Helpful” rating if they’re high or low? Any number of infographics can be drawn from the given data. It could be arranged in various ways- The most interesting for a viewer, though, might be an interactive web of products that link to each other, similar to the linked subreddit map we saw in class.</p>
+										<h2 class="major">Our Approach</h2>
+										<p>
+										After looking into alternative methods of determining whether reviews were incentivized, our final decision, rather than any bulky natural language processing
+										algorithm, was to simply GREP reviews based on simple strings with commonly-used phrases in incentivized reviews. Since customers who are offered discounts are
+										required to state it, this turned out to be a reasonably effective search pattern. With this style of filtering, the only way to ensure accuracy is manual sampling
+										of the flagged data. Every time we refined a dataframe into incentivized reviews only, we manually checked 30 reviews to make sure the customer had really mentioned
+										being incentivized. We found a 98.3% accuracy rate with this method. We didn't bother checking the non-incentivized dataset; there wouldn't be enough contamination to
+										effect the average review in any significant way.
+										</p>
 									</div>
 								</div>
 							</section>
@@ -98,7 +113,7 @@
 					<section id="footer">
 						
 							<ul class="copyright">
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								<p>Design: <a href="http://html5up.net">HTML5 UP</a></p>
 							</ul>
 						</div>
 					</section>
