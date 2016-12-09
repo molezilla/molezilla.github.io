@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Paul and Dan's project</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1><a href="index.html">Home</a></h1>
+						<h1><a href="procedure.html">Procedure</a></h1>
+						<h1><a href="stats.html">Stats</a></h1>
+						<h1><a href="thanks.html">Thanks</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="procedure.html">Procedure</a></li>
+								<li><a href="stats.html">Stats</a></li>
+								<li><a href="thanks.html">Thanks</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Banner -->
+					<section id="banner">
+						<div class="inner">
+							<div class="logo"><span class="icon fa-diamond"></span></div>
+							<h2>Amazon Product Reviews</h2>
+							<p>A data analysis project by Paul Conrady and Daniel Franklin</a></p>
+						</div>
+					</section>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+
+						<!-- One -->
+							<section id="one" class="wrapper spotlight style1">
+								<div class="inner">
+									<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+									<div class="content">
+										<h2 class="major">What's the system?</h2>
+										<p>
+										The system we’re going to examine is the Amazon review system. A large part of shopping on Amazon is that users can see reviews left by others on their products, including star-based ratings (1-5) and detailed explanations of their opinions. This helps users determine, from a large amount of data yielded by other customers who have already purchased a product, whether or not it’s worth ordering. This feature also allows users to view various metadata, the most impactful of which being the “Users also bought” feature, which shows products that users bought with the product in question.
+										</p>
+										
+									</div>
+								</div>
+							</section>
+							
+					<!-- Two -->
+							<section id="two" class="wrapper alt spotlight style2">
+								<div class="inner">
+									<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
+									<div class="content">
+										<h2 class="major">What does the data look like?</h2>
+										<p>The data we’ll be using was compiled by two sources- Jure Leskovec at Stanford University, and Julian Mcauley of UCSD. Between the two datasets, roughly 170 million reviews are covered, ranging from June 1995 to July 2014. The two datasets are available in full plaintext, as well as organized by product type (books, automotive, etc.) It is not clear as to whether the ~35 million reviews from Leskovec and the ~140 million reviews from Mcauley have overlaps, so it may be necessary to include checks for duplicate data. Each datum contains sufficient attributes to draw meaningful conclusions- relevant fields include product and user IDs, review text, numerical rating, and helpfulness of the review (as rated by other users). Leskovac’s database includes metadata for 9.4 million products including price, brand, also-viewed items, also-bought items, product url, and items bought together with the product in question. The amount and richness of data supplied indicates that our problem won’t be in finding meaningful information to draw conclusions from, but in finding efficient ways to sift through gigabytes of plaintext to find meaningful data.</p>
+									</div>
+								</div>
+							</section>
+
+						<!-- Three -->
+							<section id="three" class="wrapper spotlight style3">
+								<div class="inner">
+									<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
+									<div class="content">
+										<h2 class="major">What questions will we ask?</h2>
+										<p>There are innumerable conclusions that can be drawn by interpreting Amazon product data. At this time, we’re hoping to analyze mostly relationships between products, as well as the customers who review them. Namely: Do reviewers who review more often (Say, more than 50 reviews) generally tend to be more representative of the average review? Do initial reviews always indicate the trend a product’s reviews will follow? How interlinked are different departments in the “Users also bought” and “Users also reviewed” categories? Are ratings for a product more likely to be given a “Helpful” rating if they’re high or low? Any number of infographics can be drawn from the given data. It could be arranged in various ways- The most interesting for a viewer, though, might be an interactive web of products that link to each other, similar to the linked subreddit map we saw in class.</p>
+									</div>
+								</div>
+							</section>
+
+						
+
+				<!-- Footer -->
+					<section id="footer">
+						
+							<ul class="copyright">
+								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
